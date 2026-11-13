@@ -1,16 +1,47 @@
-#include <iostream> // input output stream 불러옴
+#include <iostream>
+#include <string>
+#include <vector>
+#include <ncurses.h>
 
-int main() { // main 함수, int 쓰는 이유는 문제없이 작동하면 return 0, 문제 있으면 1
-    std::cout << "Hello, World!";
-    //std는 c++ 표준 라이브러리
-    //:: 는 범위 지정 연산자(std 라이브러리 안에 라는 뜻)
-    //cout는 character output이라는 뜻 (문자 출력 스트람)
-    //<<는 삽입 연산자, 오른쪽에 있는 데이터를 출력 통로로 집어넣음
-    //endl은 줄바꿈 추가
-    return 0;
+std::vector<std::vector<std::string>> map(3, std::vector<std::string>(3, "."));
+
+int main() {
+    
+    initscr();
+    noecho(); 
+    cbreak(); 
+    
+    /*
+    std::string keyboardInput;
+
+    while (true)
+    {
+        std::cin >> keyboardInput;
+        
+        if(keyboardInput == "a")
+        {
+            std::cout << "a 눌림" << std::endl;
+        }
+        else if(keyboardInput == "b")
+        {
+            std::cout << "b 눌림" << std::endl;
+        }
+    }
+    */
+    
+    map[1][1] = "P";
+
+    for(int i = 0; i <= 2; i++)
+    {
+        for(int j = 0; j <=2; j++)
+        {
+            std::cout << map[i][j] << " ";
+        }
+
+        std::cout << std::endl;
+    }
+    
+    endwin();
+    
+    // g++ main.cpp -o app TODO 이 코드 컴파일하면 에러뜨는데 이거 해결하기
 }
-
-// 실행할때
-// g++ main.cpp -o app
-// ./app
-
